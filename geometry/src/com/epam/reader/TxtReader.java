@@ -8,14 +8,14 @@ public class TxtReader {
 
     public List<String> getTextFromFile(String path) {
         File file = new File(path);
-        List<String> listOfPoints = new ArrayList<String>();
+        List<String> listOfRowsFromFile = new ArrayList<>();
         BufferedReader bufferedReader = null;
 
         try {
             bufferedReader = new BufferedReader(new FileReader(file));
             String temp;
             while ((temp = bufferedReader.readLine()) != null) {
-                listOfPoints.add(temp);
+                listOfRowsFromFile.add(temp);
             }
         } catch (IOException e) {
             e.printStackTrace(); // заменить
@@ -28,7 +28,7 @@ public class TxtReader {
                 e.printStackTrace();
             }
         }
-        return listOfPoints;
+        return listOfRowsFromFile;
     }
 
 }
