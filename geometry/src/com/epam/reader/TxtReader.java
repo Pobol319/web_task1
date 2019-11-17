@@ -6,7 +6,8 @@ import java.util.List;
 
 public class TxtReader {
 
-    public List<String> getTextFromFile(File file) {
+    public List<String> getTextFromFile(String path) {
+        File file = new File(path);
         List<String> listOfPoints = new ArrayList<String>();
         BufferedReader bufferedReader = null;
 
