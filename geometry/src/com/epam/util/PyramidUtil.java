@@ -19,5 +19,41 @@ public class PyramidUtil {
         return 4 * areaOfSideOfPyramid + edge * edge;
     }
 
+    public double countPyramidVolume(Pyramid pyramid) {
+        double height = distanceBetweenPoints(getCenterOfBase(pyramid), pyramid.getVertexO());
+        double sideOfBase = distanceBetweenPoints(pyramid.getBaseA(), pyramid.getBaseB());
+        return 1.00 / 3.00 * height * sideOfBase * sideOfBase;
+    }
+
+    public boolean doesBaseLiesOnOz(Pyramid pyramid) {
+        return pyramid.getBaseA().getZ() == 0 &&
+                pyramid.getBaseB().getZ() == 0 &&
+                pyramid.getBaseC().getZ() == 0 &&
+                pyramid.getBaseC().getZ() == 0;
+    }
+
+    public double ratioOfVolumeOfPyramids(Pyramid pyramid) {
+        if (!(isOzAcrossPyramid(pyramid))) {
+            return 0;
+        }
+        Point centerOfSmallPyramidBase = pyramid.getVertexO();
+        centerOfSmallPyramidBase.setZ(0);
+        double smallPyramidHeight = distanceBetweenPoints(pyramid.getVertexO(), centerOfSmallPyramidBase);
+        double bigPyramidHeight = distanceBetweenPoints(pyramid.getVertexO(), getCenterOfBase(pyramid));
+        double similarityCoefficient = bigPyramidHeight / smallPyramidHeight;
+        return Math.pow(similarityCoefficient, 3);
+    }
+
+    private Point getCenterOfBase(Pyramid pyramid) {
+        Point centerOfBase = pyramid.getVertexO();
+        centerOfBase.setZ(pyramid.getBaseA().getZ());
+        return centerOfBase;
+    }
+
+    private boolean isOzAcrossPyramid(Pyramid pyramid) {
+        return (pyramid.getBaseA().getZ() < 0 & pyramid.getVertexO().getZ() > 0) |
+                (pyramid.getBaseA().getZ() > 0 & pyramid.getVertexO().getZ() < 0);
+    }
+
 
 }

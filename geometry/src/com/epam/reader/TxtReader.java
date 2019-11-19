@@ -1,5 +1,7 @@
 package com.epam.reader;
 
+import com.epam.exception.TxtReaderException;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +19,7 @@ public class TxtReader {
             while ((temp = bufferedReader.readLine()) != null) {
                 listOfRowsFromFile.add(temp);
             }
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace(); // заменить
         } finally {
             try {

@@ -49,7 +49,7 @@ public class Main {
 
         for (Point[] points : listOfPointsOfPyramid) {
             Pyramid pyramid = PyramidFactory.createPyramid(points);
-            if (pyramidValidator.isValidPyramid(pyramid)) {
+            if (pyramidValidator.isPyramid(pyramid)) {
                 listOfPyramid.add(pyramid);
             }
         }
