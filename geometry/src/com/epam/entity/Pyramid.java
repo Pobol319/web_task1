@@ -56,17 +56,20 @@ public class Pyramid {
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
-        Pyramid pyramid = (Pyramid) obj;
-        return baseA.equals(pyramid.baseA) &&
-                baseB.equals(pyramid.baseB) &&
-                baseC.equals(pyramid.baseC) &&
-                baseD.equals(pyramid.baseD) &&
-                vertexO.equals(pyramid.vertexO);
+        Pyramid pyramidObj = (Pyramid) obj;
+        return this.baseA.equals(pyramidObj.baseA) &&
+                this.baseB.equals(pyramidObj.baseB) &&
+                this.baseC.equals(pyramidObj.baseC) &&
+                this.baseD.equals(pyramidObj.baseD) &&
+                this.vertexO.equals(pyramidObj.vertexO);
     }
 
     @Override
     public int hashCode() {
-        return 31 * Objects.hash(baseA, baseB, baseC, baseD, vertexO);
+        int result = 17;
+        result = 37 * result + 13 * this.baseA.hashCode() + 19 * this.baseB.hashCode() +
+                23 * this.baseC.hashCode() + 29 * this.baseD.hashCode() + 31 * this.vertexO.hashCode();
+        return result;
     }
 
     @Override

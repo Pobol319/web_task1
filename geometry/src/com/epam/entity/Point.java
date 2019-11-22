@@ -42,13 +42,16 @@ public class Point {
         if (obj == null || this.getClass() != obj.getClass()) {
             return false;
         }
-        Point point = (Point) obj;
-        return this.x == point.x && this.y == point.y && this.z == point.z;
+        Point pointObj = (Point) obj;
+        return this.x == pointObj.x && this.y == pointObj.y && this.z == pointObj.z;
     }
 
     @Override
     public int hashCode() {
-        return 17 * Objects.hash(x, y, z);
+        int result = 17;
+        long longBits = Double.doubleToLongBits(x) * Double.doubleToLongBits(y) * Double.doubleToLongBits(z);
+        result = 37 * result + (int) (longBits - (longBits >>> 32));
+        return result;
     }
 
     @Override
