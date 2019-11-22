@@ -33,7 +33,7 @@ public class PyramidValidator {
         double aC = pyramidUtil.distanceBetweenPoints(pyramid.getBaseA(), pyramid.getBaseC());
         double bD = pyramidUtil.distanceBetweenPoints(pyramid.getBaseB(), pyramid.getBaseD());
 
-        return (aB==bC && cD==dA && aB == cD) && (aC == bD);
+        return (aB==cD && bC==dA) && (aC == bD);
     }
 
     private boolean isDistanceBetweenVertexAndOtherPointsSame(Pyramid pyramid){

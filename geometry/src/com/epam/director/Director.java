@@ -7,6 +7,7 @@ import com.epam.exception.TxtReaderException;
 import com.epam.factory.PointFactory;
 import com.epam.factory.PyramidFactory;
 import com.epam.reader.TxtReader;
+import com.epam.util.PyramidUtil;
 import com.epam.validator.FileDataValidator;
 import com.epam.validator.PyramidValidator;
 
@@ -20,6 +21,7 @@ public class Director {
     private ConverterToArray converterToArray = new ConverterToArray();
     private FileDataValidator fileDataValidator = new FileDataValidator();
     private PyramidValidator pyramidValidator = new PyramidValidator();
+    private PyramidUtil pyramidUtil = new PyramidUtil();
 
     public static void main(String[] args) throws TxtReaderException {
         Director director = new Director();
@@ -31,6 +33,11 @@ public class Director {
         List<double[]> listOfDoubleArrays = getListOfDoubleArrays(listOfRowsFromFile);
         List<Point[]> listOfPointsOfPyramid = getListOfPointsOfPyramid(listOfDoubleArrays);
         List<Pyramid> listOfPyramid = getListOfPyramid(listOfPointsOfPyramid);
+
+        for (Pyramid pyramid : listOfPyramid) {
+            System.out.println(pyramid.toString());
+        }
+
     }
 
     private List<double[]> getListOfDoubleArrays(List<String> listOfRowsFromFile) {
@@ -52,7 +59,7 @@ public class Director {
             int orderPoint = 0;
             Point[] arrayPoint = new Point[5];
             for (int i = 0; i < doubles.length; i += 3) {
-                Point point = PointFactory.createPoint(iX + i, iY + i, iZ + i);
+                Point point = PointFactory.createPoint(doubles[iX + i], doubles[iY + i], doubles[iZ + i]);
                 arrayPoint[orderPoint] = point;
                 orderPoint++;
             }
