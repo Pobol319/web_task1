@@ -10,10 +10,10 @@ public class PyramidValidator {
         if (!(doesAllPointsLiesOnSameZ(pyramid))) {
             return false;
         }
-        if(!(isPointsOfBaseDifferent(pyramid))){
+        if (!(isPointsOfBaseDifferent(pyramid))) {
             return false;
         }
-        if(!(isDistanceBetweenVertexAndOtherPointsSame(pyramid))){
+        if (!(isDistanceBetweenVertexAndOtherPointsSame(pyramid))) {
             return false;
         }
         return true;
@@ -33,10 +33,10 @@ public class PyramidValidator {
         double aC = pyramidUtil.distanceBetweenPoints(pyramid.getBaseA(), pyramid.getBaseC());
         double bD = pyramidUtil.distanceBetweenPoints(pyramid.getBaseB(), pyramid.getBaseD());
 
-        return (aB==cD && bC==dA) && (aC == bD);
+        return (aB == cD && bC == dA && aB == bC) && (aC == bD);
     }
 
-    private boolean isDistanceBetweenVertexAndOtherPointsSame(Pyramid pyramid){
+    private boolean isDistanceBetweenVertexAndOtherPointsSame(Pyramid pyramid) {
         double oA = pyramidUtil.distanceBetweenPoints(pyramid.getVertexO(), pyramid.getBaseA());
         double oB = pyramidUtil.distanceBetweenPoints(pyramid.getVertexO(), pyramid.getBaseB());
         double oC = pyramidUtil.distanceBetweenPoints(pyramid.getVertexO(), pyramid.getBaseC());

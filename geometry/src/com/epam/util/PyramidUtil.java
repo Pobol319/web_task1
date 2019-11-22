@@ -20,7 +20,7 @@ public class PyramidUtil {
     }
 
     public double countPyramidVolume(Pyramid pyramid) {
-        double height = distanceBetweenPoints(getCenterOfBase(pyramid), pyramid.getVertexO());
+        double height = distanceBetweenPoints(pyramid.getVertexO(), getCenterOfBase(pyramid));
         double sideOfBase = distanceBetweenPoints(pyramid.getBaseA(), pyramid.getBaseB());
         return 1.00 / 3.00 * height * sideOfBase * sideOfBase;
     }
@@ -36,7 +36,9 @@ public class PyramidUtil {
         if (!(isOzAcrossPyramid(pyramid))) {
             return 0;
         }
-        Point centerOfSmallPyramidBase = pyramid.getVertexO();
+        Point centerOfSmallPyramidBase = new Point();
+        centerOfSmallPyramidBase.setX(pyramid.getVertexO().getX());
+        centerOfSmallPyramidBase.setY(pyramid.getVertexO().getY());
         centerOfSmallPyramidBase.setZ(0);
         double smallPyramidHeight = distanceBetweenPoints(pyramid.getVertexO(), centerOfSmallPyramidBase);
         double bigPyramidHeight = distanceBetweenPoints(pyramid.getVertexO(), getCenterOfBase(pyramid));
@@ -45,7 +47,9 @@ public class PyramidUtil {
     }
 
     private Point getCenterOfBase(Pyramid pyramid) {
-        Point centerOfBase = pyramid.getVertexO();
+        Point centerOfBase = new Point();
+        centerOfBase.setX(pyramid.getVertexO().getX());
+        centerOfBase.setY(pyramid.getVertexO().getY());
         centerOfBase.setZ(pyramid.getBaseA().getZ());
         return centerOfBase;
     }
