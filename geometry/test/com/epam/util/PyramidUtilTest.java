@@ -12,60 +12,41 @@ public class PyramidUtilTest {
 
     @BeforeClass
     public static void setUp() {
-        Point a = new Point();
-        a.setX(3);
-        a.setY(2);
-        a.setZ(1);
+        Point a = new Point(3, 2, 1);
+        Point b = new Point(9, 2, 1);
+        Point c = new Point(9, 8, 1);
+        Point d = new Point(3, 8, 1);
+        Point o = new Point(6, 6, 13);
         pyramid.setBaseA(a);
-
-        Point b = new Point();
-        b.setX(9);
-        b.setY(2);
-        b.setZ(1);
         pyramid.setBaseB(b);
-
-        Point c = new Point();
-        c.setX(9);
-        c.setY(8);
-        c.setZ(1);
         pyramid.setBaseC(c);
-
-        Point d = new Point();
-        d.setX(3);
-        d.setY(8);
-        d.setZ(1);
         pyramid.setBaseD(d);
-
-        Point o = new Point();
-        o.setX(6);
-        o.setY(6);
-        o.setZ(13);
         pyramid.setVertexO(o);
     }
 
     @Test
     public void distanceBetweenPointsTest() {
-        Assert.assertEquals(6,pyramidUtil.distanceBetweenPoints(pyramid.getBaseA(),pyramid.getBaseB()),0.1);
+        Assert.assertEquals(6, pyramidUtil.countDistanceBetweenPoints(pyramid.getBaseA(), pyramid.getBaseB()), 0.1);
     }
 
     @Test
-    public void countPyramidSurfaceAreaTest(){
-       Assert.assertEquals(320, pyramidUtil.countPyramidSurfaceArea(pyramid),1);
+    public void countPyramidSurfaceAreaTest() {
+        Assert.assertEquals(320, pyramidUtil.countPyramidSurfaceArea(pyramid), 1);
     }
 
     @Test
-    public void countPyramidVolumeTest(){
-        Assert.assertEquals(144,pyramidUtil.countPyramidVolume(pyramid),1);
+    public void countPyramidVolumeTest() {
+        Assert.assertEquals(144, pyramidUtil.countPyramidVolume(pyramid), 1);
     }
 
     @Test
-    public void doesBaseLiesOnOzTest(){
+    public void doesBaseLiesOnOzTest() {
         Assert.assertFalse(pyramidUtil.doesBaseLiesOnOz(pyramid));
     }
 
     @Test
-    public void ratioOfVolumeOfPyramidsTest(){
-        Assert.assertEquals(0,pyramidUtil.ratioOfVolumeOfPyramids(pyramid), 1);
+    public void ratioOfVolumeOfPyramidsTest() {
+        Assert.assertEquals(0, pyramidUtil.ratioOfVolumeOfPyramids(pyramid), 1);
     }
 
 }

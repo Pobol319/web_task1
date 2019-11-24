@@ -3,15 +3,15 @@ package com.epam.validator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static com.epam.constants.PyramidConstants.REQUIRED_NUMBER_OF_DOUBLES;
-import static com.epam.constants.RegularExpressions.VALID_POINT;
 
 public class FileDataValidator {
+    private static final int REQUIRED_NUMBER_OF_DOUBLES = 15;
+    private static final String VALID_POINT = "-?[0-9]+\\.?[0-9]*";
+
     public boolean isValidRow(String temp) {
         if (temp == null) {
             return false;
         }
-
         if (temp.isEmpty()) {
             return false;
         }

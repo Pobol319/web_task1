@@ -5,23 +5,23 @@ import com.epam.entity.Pyramid;
 
 public class PyramidUtil {
 
-    public double distanceBetweenPoints(Point a, Point b) {
+    public double countDistanceBetweenPoints(Point a, Point b) {
         return Math.sqrt(Math.pow(a.getX() - b.getX(), 2) +
                 Math.pow(a.getY() - b.getY(), 2) +
                 Math.pow(a.getZ() - b.getZ(), 2));
     }
 
     public double countPyramidSurfaceArea(Pyramid pyramid) {
-        double edge = distanceBetweenPoints(pyramid.getVertexO(), pyramid.getBaseA());
-        double sideOfBase = distanceBetweenPoints(pyramid.getBaseA(), pyramid.getBaseB());
+        double edge = countDistanceBetweenPoints(pyramid.getVertexO(), pyramid.getBaseA());
+        double sideOfBase = countDistanceBetweenPoints(pyramid.getBaseA(), pyramid.getBaseB());
         double halfPerimeter = (2 * edge + sideOfBase) / 2;
         double areaOfSideOfPyramid = Math.sqrt(halfPerimeter * (halfPerimeter - edge) * (halfPerimeter - edge) * (halfPerimeter - sideOfBase));
         return 4 * areaOfSideOfPyramid + edge * edge;
     }
 
     public double countPyramidVolume(Pyramid pyramid) {
-        double height = distanceBetweenPoints(pyramid.getVertexO(), getCenterOfBase(pyramid));
-        double sideOfBase = distanceBetweenPoints(pyramid.getBaseA(), pyramid.getBaseB());
+        double height = countDistanceBetweenPoints(pyramid.getVertexO(), getCenterOfBase(pyramid));
+        double sideOfBase = countDistanceBetweenPoints(pyramid.getBaseA(), pyramid.getBaseB());
         return 1.00 / 3.00 * height * sideOfBase * sideOfBase;
     }
 
@@ -36,22 +36,15 @@ public class PyramidUtil {
         if (!(isOzAcrossPyramid(pyramid))) {
             return 0;
         }
-        Point centerOfSmallPyramidBase = new Point();
-        centerOfSmallPyramidBase.setX(pyramid.getVertexO().getX());
-        centerOfSmallPyramidBase.setY(pyramid.getVertexO().getY());
-        centerOfSmallPyramidBase.setZ(0);
-        double smallPyramidHeight = distanceBetweenPoints(pyramid.getVertexO(), centerOfSmallPyramidBase);
-        double bigPyramidHeight = distanceBetweenPoints(pyramid.getVertexO(), getCenterOfBase(pyramid));
+        Point centerOfSmallPyramidBase = new Point(pyramid.getVertexO().getX(), pyramid.getVertexO().getY(), 0);
+        double smallPyramidHeight = countDistanceBetweenPoints(pyramid.getVertexO(), centerOfSmallPyramidBase);
+        double bigPyramidHeight = countDistanceBetweenPoints(pyramid.getVertexO(), getCenterOfBase(pyramid));
         double similarityCoefficient = bigPyramidHeight / smallPyramidHeight;
         return Math.pow(similarityCoefficient, 3);
     }
 
     private Point getCenterOfBase(Pyramid pyramid) {
-        Point centerOfBase = new Point();
-        centerOfBase.setX(pyramid.getVertexO().getX());
-        centerOfBase.setY(pyramid.getVertexO().getY());
-        centerOfBase.setZ(pyramid.getBaseA().getZ());
-        return centerOfBase;
+        return new Point(pyramid.getVertexO().getX(), pyramid.getVertexO().getY(), pyramid.getBaseA().getZ());
     }
 
     private boolean isOzAcrossPyramid(Pyramid pyramid) {

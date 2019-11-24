@@ -3,33 +3,32 @@ package com.epam.director;
 import com.epam.converter.ConverterToArray;
 import com.epam.entity.Point;
 import com.epam.entity.Pyramid;
-import com.epam.exception.TxtReaderException;
-import com.epam.factory.PointFactory;
-import com.epam.factory.PyramidFactory;
-import com.epam.reader.TxtReader;
-import com.epam.util.PyramidUtil;
+import com.epam.exception.DataReaderException;
+import com.epam.creator.PyramidCreator;
+import com.epam.reader.DataReader;
 import com.epam.validator.FileDataValidator;
 import com.epam.validator.PyramidValidator;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 
 public class Director {
     private static final String NUMBERS_PATH = "resources\\numbers.txt";
-    private TxtReader txtReader = new TxtReader();
+    private DataReader dataReader = new DataReader();
     private ConverterToArray converterToArray = new ConverterToArray();
     private FileDataValidator fileDataValidator = new FileDataValidator();
     private PyramidValidator pyramidValidator = new PyramidValidator();
-    private PyramidUtil pyramidUtil = new PyramidUtil();
+    private PyramidCreator pyramidCreator = new PyramidCreator(pyramidValidator);
 
-    public static void main(String[] args) throws TxtReaderException {
+    public static void main(String[] args) throws DataReaderException {
         Director director = new Director();
-        director.createListOfPyramids();
+        director.runner();
     }
 
-    public void createListOfPyramids() throws TxtReaderException {
-        List<String> listOfRowsFromFile = txtReader.getTextFromFile(NUMBERS_PATH);
+    public void runner() throws DataReaderException {
+        List<String> listOfRowsFromFile = dataReader.getTextFromFile(NUMBERS_PATH);
         List<double[]> listOfDoubleArrays = getListOfDoubleArrays(listOfRowsFromFile);
         List<Point[]> listOfPointsOfPyramid = getListOfPointsOfPyramid(listOfDoubleArrays);
         List<Pyramid> listOfPyramid = getListOfPyramid(listOfPointsOfPyramid);
@@ -59,7 +58,7 @@ public class Director {
             int orderPoint = 0;
             Point[] arrayPoint = new Point[5];
             for (int i = 0; i < doubles.length; i += 3) {
-                Point point = PointFactory.createPoint(doubles[iX + i], doubles[iY + i], doubles[iZ + i]);
+                Point point = new Point(doubles[iX + i], doubles[iY + i], doubles[iZ + i]);
                 arrayPoint[orderPoint] = point;
                 orderPoint++;
             }
@@ -71,10 +70,8 @@ public class Director {
     private List<Pyramid> getListOfPyramid(List<Point[]> listOfPointsOfPyramid) {
         List<Pyramid> listOfPyramid = new ArrayList<>();
         for (Point[] points : listOfPointsOfPyramid) {
-            Pyramid pyramid = PyramidFactory.createPyramid(points);
-            if (pyramidValidator.isPyramid(pyramid)) {
-                listOfPyramid.add(pyramid);
-            }
+            Optional<Pyramid> pyramid = pyramidCreator.createPyramid(points);
+            pyramid.ifPresent(listOfPyramid::add);
         }
         return listOfPyramid;
     }
