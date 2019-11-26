@@ -25,28 +25,28 @@ public class PyramidUtilTest {
     }
 
     @Test
-    public void distanceBetweenPointsTest() {
+    public void testDistanceBetweenPoints() {
         Assert.assertEquals(6, pyramidUtil.countDistanceBetweenPoints(pyramid.getBaseA(), pyramid.getBaseB()), 0.1);
     }
 
     @Test
-    public void countPyramidSurfaceAreaTest() {
+    public void testCountPyramidSurfaceArea() {
         Assert.assertEquals(320, pyramidUtil.countPyramidSurfaceArea(pyramid), 1);
     }
 
     @Test
-    public void countPyramidVolumeTest() {
+    public void testCountPyramidVolume() {
         Assert.assertEquals(144, pyramidUtil.countPyramidVolume(pyramid), 1);
     }
 
     @Test
-    public void doesBaseLiesOnOzTest() {
+    public void testDoesBaseLiesOnOz() {
         Assert.assertFalse(pyramidUtil.doesBaseLiesOnOz(pyramid));
     }
 
     @Test
-    public void ratioOfVolumeOfPyramidsTest() {
-        Assert.assertEquals(0, pyramidUtil.ratioOfVolumeOfPyramids(pyramid), 1);
+    public void testCountRatioOfVolumeOfPyramids() {
+        Assert.assertEquals(0, pyramidUtil.countRatioOfVolumeOfPyramids(pyramid), 1);
     }
 
 }

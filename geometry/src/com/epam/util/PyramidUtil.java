@@ -32,7 +32,7 @@ public class PyramidUtil {
                 pyramid.getBaseC().getZ() == 0;
     }
 
-    public double ratioOfVolumeOfPyramids(Pyramid pyramid) {
+    public double countRatioOfVolumeOfPyramids(Pyramid pyramid) {
         if (!(isOzAcrossPyramid(pyramid))) {
             return 0;
         }
