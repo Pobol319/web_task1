@@ -35,12 +35,10 @@ public class PyramidObserver implements Observer {
             pyramidParameters.setPyramidVolume(pyramidUtil.countPyramidVolume(observable));
             pyramidParameters.setRatioOfVolumeOfPyramids(pyramidUtil.countRatioOfVolumeOfPyramids(observable));
             map.put(identifier, pyramidParameters);
-            System.out.println(map.get(identifier).toString());
         } else {
             map.get(identifier).setPyramidSurfaceArea(pyramidUtil.countPyramidSurfaceArea(observable));
             map.get(identifier).setPyramidVolume(pyramidUtil.countPyramidVolume(observable));
             map.get(identifier).setRatioOfVolumeOfPyramids(pyramidUtil.countRatioOfVolumeOfPyramids(observable));
-            System.out.println(map.get(identifier).toString());
         }
     }
 }

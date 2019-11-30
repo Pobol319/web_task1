@@ -7,7 +7,7 @@ import org.junit.Test;
 public class ConverterToArrayTest {
 
     @Test
-    public void testGetDoubleArray(){
+    public void testGetDoubleArrayReturnDoubleArray(){
         //given
         String row = "1.0;2.0;3.0";
         double[] expectedArray = {1.0,2.0,3.0};

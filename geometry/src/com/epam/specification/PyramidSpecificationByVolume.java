@@ -17,6 +17,6 @@ public class PyramidSpecificationByVolume implements PyramidSpecification {
     public boolean specified(PyramidIdentifier pyramidIdentifier) {
         PyramidUtil pyramidUtil = new PyramidUtil();
         double volume = pyramidUtil.countPyramidVolume(pyramidIdentifier);
-        return minVolume > volume & volume < maxVolume;
+        return minVolume < volume & volume < maxVolume;
     }
 }

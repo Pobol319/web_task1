@@ -8,7 +8,7 @@ public class PyramidValidatorTest {
     private PyramidValidator pyramidValidator = new PyramidValidator();
 
     @Test
-    public void testIsPyramidWherePointsHaveDifferentZ() {
+    public void testIsPyramidWherePointsHaveDifferentZReturnFalse() {
         //given
         Point a = new Point(2, 4, -3);
         Point b = new Point(6, 4, -3);
@@ -22,7 +22,7 @@ public class PyramidValidatorTest {
     }
 
     @Test
-    public void testIsPyramidWherePointsHaveSameCoordinates() {
+    public void testIsPyramidWherePointsHaveSameCoordinatesReturnFalse() {
         //given
         Point a = new Point(2, 4, -3);
         Point b = new Point(2, 4, -3);
@@ -36,7 +36,7 @@ public class PyramidValidatorTest {
     }
 
     @Test
-    public void testIsPyramidWhereDistanceBetweenVertexAndPointsOfBaseDifferent() {
+    public void testIsPyramidWhereDistanceBetweenVertexAndPointsOfBaseDifferentReturnFalse() {
         //given
         Point a = new Point(2, 4, -3);
         Point b = new Point(2, 4, -3);
@@ -50,7 +50,7 @@ public class PyramidValidatorTest {
     }
 
     @Test
-    public void testIsPyramidPositiveScenario() {
+    public void testIsPyramidWithValidPointsReturnTrue() {
         //given
         Point a = new Point(2, 4, -3);
         Point b = new Point(6, 4, -3);

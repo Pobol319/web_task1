@@ -25,28 +25,62 @@ public class PyramidUtilTest {
     }
 
     @Test
-    public void testDistanceBetweenPoints() {
+    public void testCountDistanceBetweenPointsReturnDistanceBetweenPoints() {
         Assert.assertEquals(6, pyramidUtil.countDistanceBetweenPoints(pyramid.getBaseA(), pyramid.getBaseB()), 0.1);
     }
 
     @Test
-    public void testCountPyramidSurfaceArea() {
+    public void testCountPyramidSurfaceAreaReturnSurfaceArea() {
         Assert.assertEquals(320, pyramidUtil.countPyramidSurfaceArea(pyramid), 1);
     }
 
     @Test
-    public void testCountPyramidVolume() {
+    public void testCountPyramidVolumeReturnVolume() {
         Assert.assertEquals(144, pyramidUtil.countPyramidVolume(pyramid), 1);
     }
 
     @Test
-    public void testDoesBaseLiesOnOz() {
+    public void testDoesBaseLiesOnOzWhenPyramidNotLiesOnOzReturnFalse() {
         Assert.assertFalse(pyramidUtil.doesBaseLiesOnOz(pyramid));
     }
 
     @Test
-    public void testCountRatioOfVolumeOfPyramids() {
+    public void testDoesBaseLiesOnOzWhenPyramidLiesOnOzReturnTrue() {
+        Pyramid pyramid2 = new Pyramid();
+        Point a = new Point(3, 2, 0);
+        Point b = new Point(9, 2, 0);
+        Point c = new Point(9, 8, 0);
+        Point d = new Point(3, 8, 0);
+        Point o = new Point(6, 6, 13);
+        pyramid2.setBaseA(a);
+        pyramid2.setBaseB(b);
+        pyramid2.setBaseC(c);
+        pyramid2.setBaseD(d);
+        pyramid2.setVertexO(o);
+
+        Assert.assertTrue(pyramidUtil.doesBaseLiesOnOz(pyramid2));
+    }
+
+    @Test
+    public void testCountRatioOfVolumeOfPyramidsWhenOzNotAcrossPyramidReturnZero() {
         Assert.assertEquals(0, pyramidUtil.countRatioOfVolumeOfPyramids(pyramid), 1);
+    }
+
+    @Test
+    public void testCountRatioOfVolumeOfPyramidsWhenOzAcrossPyramidReturnRatio() {
+        Pyramid pyramid2 = new Pyramid();
+        Point a = new Point(3, 2, -2);
+        Point b = new Point(9, 2, -2);
+        Point c = new Point(9, 8, -2);
+        Point d = new Point(3, 8, -2);
+        Point o = new Point(6, 6, 13);
+        pyramid2.setBaseA(a);
+        pyramid2.setBaseB(b);
+        pyramid2.setBaseC(c);
+        pyramid2.setBaseD(d);
+        pyramid2.setVertexO(o);
+
+        Assert.assertEquals(1.5, pyramidUtil.countRatioOfVolumeOfPyramids(pyramid2), 1);
     }
 
 }

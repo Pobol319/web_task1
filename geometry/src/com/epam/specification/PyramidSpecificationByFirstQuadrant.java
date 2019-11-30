@@ -4,7 +4,6 @@ import com.epam.entity.Point;
 import com.epam.entity.PyramidIdentifier;
 import com.epam.repository.PyramidSpecification;
 
-import static jdk.nashorn.internal.objects.Global.Infinity;
 
 
 public class PyramidSpecificationByFirstQuadrant implements PyramidSpecification {
@@ -26,6 +25,7 @@ public class PyramidSpecificationByFirstQuadrant implements PyramidSpecification
     }
 
     private boolean isNumberLiesBetweenZeroAndInfinity(double number) {
-        return number > 0 & number < Infinity;
+        double inf = Double.POSITIVE_INFINITY;
+        return number > 0 & number < inf;
     }
 }
