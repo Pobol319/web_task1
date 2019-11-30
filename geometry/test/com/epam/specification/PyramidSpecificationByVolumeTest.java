@@ -2,7 +2,6 @@ package com.epam.specification;
 
 import com.epam.entity.Point;
 import com.epam.entity.PyramidIdentifier;
-import com.epam.util.PyramidUtil;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -11,8 +10,6 @@ public class PyramidSpecificationByVolumeTest {
 
     @Test
     public void testSpecifiedWhenVolumeNotLiesBetweenMinAndMaxValuesReturnFalse(){
-        PyramidUtil pyramidUtil = new PyramidUtil();
-
         //given
         Point a = new Point(2, 4, -1);
         Point b = new Point(6, 4, -1);
