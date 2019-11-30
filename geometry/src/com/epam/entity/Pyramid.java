@@ -12,6 +12,14 @@ public class Pyramid {
     public Pyramid() {
     }
 
+    public Pyramid(Point a, Point b, Point c, Point d, Point o) {
+        this.baseA = a;
+        this.baseB = b;
+        this.baseC = c;
+        this.baseD = d;
+        this.vertexO = o;
+    }
+
     public void setBaseA(Point baseA) {
         this.baseA = baseA;
     }
@@ -54,8 +62,12 @@ public class Pyramid {
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
         Pyramid pyramidObj = (Pyramid) obj;
         return this.baseA.equals(pyramidObj.baseA) &&
                 this.baseB.equals(pyramidObj.baseB) &&

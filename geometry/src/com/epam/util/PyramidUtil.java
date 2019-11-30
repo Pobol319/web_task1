@@ -29,7 +29,7 @@ public class PyramidUtil {
         return pyramid.getBaseA().getZ() == 0 &&
                 pyramid.getBaseB().getZ() == 0 &&
                 pyramid.getBaseC().getZ() == 0 &&
-                pyramid.getBaseC().getZ() == 0;
+                pyramid.getBaseD().getZ() == 0;
     }
 
     public double countRatioOfVolumeOfPyramids(Pyramid pyramid) {
