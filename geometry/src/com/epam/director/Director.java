@@ -15,22 +15,12 @@ import java.util.Optional;
 
 
 public class Director {
-    private static String NUMBERS_PATH;
-    private DataReader dataReader;
-    private ConverterToArray converterToArray;
-    private FileDataValidator fileDataValidator;
-    private PyramidValidator pyramidValidator;
-    private PyramidCreator pyramidCreator;
-
-    Director(String path, DataReader dataReader, ConverterToArray converterToArray,
-             FileDataValidator fileDataValidator, PyramidValidator pyramidValidator, PyramidCreator pyramidCreator) {
-        NUMBERS_PATH = path;
-        this.dataReader = dataReader;
-        this.converterToArray = converterToArray;
-        this.fileDataValidator = fileDataValidator;
-        this.pyramidValidator = pyramidValidator;
-        this.pyramidCreator = pyramidCreator;
-    }
+    private static final String NUMBERS_PATH = "resources\\numbers.txt";
+    private DataReader dataReader = new DataReader();
+    private ConverterToArray converterToArray = new ConverterToArray();
+    private FileDataValidator fileDataValidator = new FileDataValidator();
+    private PyramidValidator pyramidValidator = new PyramidValidator();
+    private PyramidCreator pyramidCreator = new PyramidCreator(pyramidValidator);
 
     public List<Pyramid> run() throws DataReaderException {
         List<String> listOfRowsFromFile = dataReader.getTextFromFile(NUMBERS_PATH);
@@ -75,5 +65,4 @@ public class Director {
         }
         return listOfPyramid;
     }
-
 }

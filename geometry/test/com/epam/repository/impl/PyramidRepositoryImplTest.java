@@ -29,18 +29,18 @@ public class PyramidRepositoryImplTest {
         Point o3 = new Point(6, 8, 14);
         PyramidIdentifier pyramid3 = new PyramidIdentifier(a, b, c, d, o3, 200);
 
-        List<PyramidIdentifier> list = new ArrayList<>();
-        list.add(pyramid1);
-        list.add(pyramid2);
-        list.add(pyramid3);
+        List<PyramidIdentifier> listOfPyramids = new ArrayList<>();
+        listOfPyramids.add(pyramid1);
+        listOfPyramids.add(pyramid2);
+        listOfPyramids.add(pyramid3);
         PyramidRepositoryImpl pyramidRepositoryImpl = new PyramidRepositoryImpl();
         IdComparator idComparator = new IdComparator();
         //when
-        pyramidRepositoryImpl.sort(list,idComparator);
+        pyramidRepositoryImpl.sort(listOfPyramids,idComparator);
         //then
-        Assert.assertEquals(list.get(0),pyramid2);
-        Assert.assertEquals(list.get(1),pyramid1);
-        Assert.assertEquals(list.get(2),pyramid3);
+        Assert.assertEquals(listOfPyramids.get(0),pyramid2);
+        Assert.assertEquals(listOfPyramids.get(1),pyramid1);
+        Assert.assertEquals(listOfPyramids.get(2),pyramid3);
     }
 
     @Test
@@ -66,8 +66,8 @@ public class PyramidRepositoryImplTest {
 
         PyramidSpecificationById specification = new PyramidSpecificationById(200);
         //when
-        List<PyramidIdentifier> list = pyramidRepositoryImpl.query(specification);
+        List<PyramidIdentifier> listOfPyramids = pyramidRepositoryImpl.query(specification);
         //then
-        Assert.assertEquals(list.get(0),pyramid3);
+        Assert.assertEquals(listOfPyramids.get(0),pyramid3);
     }
 }
