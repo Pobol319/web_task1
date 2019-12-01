@@ -7,7 +7,6 @@ public class PyramidSpecificationById implements PyramidSpecification {
     private long identifier;
 
     public PyramidSpecificationById(long identifier) {
-        super();
         this.identifier = identifier;
     }
 

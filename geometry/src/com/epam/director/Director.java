@@ -3,7 +3,6 @@ package com.epam.director;
 import com.epam.converter.ConverterToArray;
 import com.epam.entity.Point;
 import com.epam.entity.Pyramid;
-import com.epam.entity.PyramidIdentifier;
 import com.epam.exception.DataReaderException;
 import com.epam.creator.PyramidCreator;
 import com.epam.reader.DataReader;
@@ -25,11 +24,11 @@ public class Director {
 
     public static void main(String[] args) throws DataReaderException {
         Director director = new Director();
-        director.runner();
+        director.run();
 
     }
 
-    public void runner() throws DataReaderException {
+    public void run() throws DataReaderException {
         List<String> listOfRowsFromFile = dataReader.getTextFromFile(NUMBERS_PATH);
         List<double[]> listOfDoubleArrays = getListOfDoubleArrays(listOfRowsFromFile);
         List<Point[]> listOfPointsOfPyramid = getListOfPointsOfPyramid(listOfDoubleArrays);

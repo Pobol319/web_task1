@@ -24,8 +24,9 @@ public class PyramidRepositoryClass implements PyramidRepository {
     }
 
     @Override
-    public List query(PyramidSpecification pyramidSpecification) {
+    public List<PyramidIdentifier> query(PyramidSpecification pyramidSpecification) {
         List<PyramidIdentifier> pyramids = new ArrayList<>();
+
         Set<Long> keys = pyramidMap.keySet();
         for (Long key : keys) {
             PyramidIdentifier pyramid = pyramidMap.get(key);
@@ -34,5 +35,9 @@ public class PyramidRepositoryClass implements PyramidRepository {
             }
         }
         return pyramids;
+    }
+
+    public void sort(List<PyramidIdentifier> pyramids, Comparator<PyramidIdentifier> comparator){
+        pyramids.sort(comparator);
     }
 }
