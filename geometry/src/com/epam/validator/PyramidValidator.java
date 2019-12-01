@@ -7,22 +7,22 @@ public class PyramidValidator {
     private PyramidUtil pyramidUtil = new PyramidUtil();
 
     public boolean isPyramid(Point a, Point b, Point c, Point d, Point o) {
-        if (!(doesAllPointsLiesOnSameZ(a, b, c, d))) {
+        if (!(doAllPointsLiesOnSameZ(a, b, c, d))) {
             return false;
         }
-        if (!(isPointsOfBaseDifferent(a, b, c, d))) {
+        if (!(areBasePointsDifferent(a, b, c, d))) {
             return false;
         }
         return isDistanceBetweenVertexAndOtherPointsSame(a, b, c, d, o);
     }
 
-    private boolean doesAllPointsLiesOnSameZ(Point a, Point b, Point c, Point d) {
+    private boolean doAllPointsLiesOnSameZ(Point a, Point b, Point c, Point d) {
         return a.getZ() == b.getZ()
                 && c.getZ() == d.getZ()
                 && d.getZ() == a.getZ();
     }
 
-    private boolean isPointsOfBaseDifferent(Point a, Point b, Point c, Point d) {
+    private boolean areBasePointsDifferent(Point a, Point b, Point c, Point d) {
         double aB = pyramidUtil.countDistanceBetweenPoints(a, b);
         double bC = pyramidUtil.countDistanceBetweenPoints(b, c);
         double cD = pyramidUtil.countDistanceBetweenPoints(c, d);

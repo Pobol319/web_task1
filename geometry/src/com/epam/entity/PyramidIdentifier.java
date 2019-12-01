@@ -1,6 +1,5 @@
 package com.epam.entity;
 
-import com.epam.entity.Pyramid;
 
 public class PyramidIdentifier extends Pyramid {
     private final long identifier;

@@ -1,11 +1,12 @@
-package com.epam.entity;
+package com.epam.repository.impl;
 
+import com.epam.entity.PyramidIdentifier;
 import com.epam.repository.PyramidRepository;
 import com.epam.repository.PyramidSpecification;
 
 import java.util.*;
 
-public class PyramidRepositoryClass implements PyramidRepository {
+public class PyramidRepositoryImpl implements PyramidRepository {
     private Map<Long, PyramidIdentifier> pyramidMap = new HashMap<>();
 
     @Override

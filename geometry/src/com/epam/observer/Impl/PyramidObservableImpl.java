@@ -1,14 +1,16 @@
-package com.epam.entity;
+package com.epam.observer.Impl;
 
+import com.epam.entity.Point;
+import com.epam.entity.PyramidIdentifier;
 import com.epam.observer.Observable;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class PyramidObservable extends PyramidIdentifier implements Observable {
-    private List<PyramidObserver> observers = new ArrayList<>();
+public class PyramidObservableImpl extends PyramidIdentifier implements Observable {
+    private List<PyramidObserverImpl> observers = new ArrayList<>();
 
-    public PyramidObservable(Point a, Point b, Point c, Point d, Point o, long identifier) {
+    public PyramidObservableImpl(Point a, Point b, Point c, Point d, Point o, long identifier) {
         super(a, b, c, d, o, identifier);
     }
 
@@ -38,18 +40,18 @@ public class PyramidObservable extends PyramidIdentifier implements Observable {
     }
 
     @Override
-    public void attach(PyramidObserver observer) {
+    public void attach(PyramidObserverImpl observer) {
         this.observers.add(observer);
     }
 
     @Override
-    public void detach(PyramidObserver observer) {
+    public void detach(PyramidObserverImpl observer) {
         this.observers.remove(observer);
     }
 
     @Override
     public void notifyObservers() {
-        for (PyramidObserver observer : this.observers) {
+        for (PyramidObserverImpl observer : this.observers) {
             observer.update(this);
         }
     }

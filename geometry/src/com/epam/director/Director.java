@@ -15,29 +15,28 @@ import java.util.Optional;
 
 
 public class Director {
-    private static final String NUMBERS_PATH = "resources\\numbers.txt";
-    private DataReader dataReader = new DataReader();
-    private ConverterToArray converterToArray = new ConverterToArray();
-    private FileDataValidator fileDataValidator = new FileDataValidator();
-    private PyramidValidator pyramidValidator = new PyramidValidator();
-    private PyramidCreator pyramidCreator = new PyramidCreator(pyramidValidator);
+    private static String NUMBERS_PATH;
+    private DataReader dataReader;
+    private ConverterToArray converterToArray;
+    private FileDataValidator fileDataValidator;
+    private PyramidValidator pyramidValidator;
+    private PyramidCreator pyramidCreator;
 
-    public static void main(String[] args) throws DataReaderException {
-        Director director = new Director();
-        director.run();
-
+    Director(String path, DataReader dataReader, ConverterToArray converterToArray,
+             FileDataValidator fileDataValidator, PyramidValidator pyramidValidator, PyramidCreator pyramidCreator) {
+        NUMBERS_PATH = path;
+        this.dataReader = dataReader;
+        this.converterToArray = converterToArray;
+        this.fileDataValidator = fileDataValidator;
+        this.pyramidValidator = pyramidValidator;
+        this.pyramidCreator = pyramidCreator;
     }
 
-    public void run() throws DataReaderException {
+    public List<Pyramid> run() throws DataReaderException {
         List<String> listOfRowsFromFile = dataReader.getTextFromFile(NUMBERS_PATH);
         List<double[]> listOfDoubleArrays = getListOfDoubleArrays(listOfRowsFromFile);
-        List<Point[]> listOfPointsOfPyramid = getListOfPointsOfPyramid(listOfDoubleArrays);
-        List<Pyramid> listOfPyramid = getListOfPyramid(listOfPointsOfPyramid);
-
-        for (Pyramid pyramid : listOfPyramid) {
-            System.out.println(pyramid.toString());
-        }
-
+        List<Point[]> listOfPyramidPoints = getListOfPyramidPoints(listOfDoubleArrays);
+        return getListOfPyramid(listOfPyramidPoints);
     }
 
     private List<double[]> getListOfDoubleArrays(List<String> listOfRowsFromFile) {
@@ -50,7 +49,7 @@ public class Director {
         return listOfDoubleArrays;
     }
 
-    private List<Point[]> getListOfPointsOfPyramid(List<double[]> listOfDoubleArrays) {
+    private List<Point[]> getListOfPyramidPoints(List<double[]> listOfDoubleArrays) {
         List<Point[]> listOfPointsOfPyramid = new ArrayList<>();
         for (double[] doubles : listOfDoubleArrays) {
             int iX = 0;

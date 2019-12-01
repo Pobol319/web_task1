@@ -1,7 +1,7 @@
 package com.epam.comparator;
 
 import com.epam.entity.Point;
-import com.epam.entity.PyramidObservable;
+import com.epam.entity.PyramidIdentifier;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -16,10 +16,10 @@ public class ByCoordinateYComparatorTest {
         Point c = new Point(6, 8, -3);
         Point d = new Point(2, 8, -3);
         Point o1 = new Point(4, 6, 4);
-        PyramidObservable pyramid1 = new PyramidObservable(a, b, c, d, o1, 101);
+        PyramidIdentifier pyramid1 = new PyramidIdentifier(a, b, c, d, o1, 101);
 
         Point o2 = new Point(3, 5, 4);
-        PyramidObservable pyramid2 = new PyramidObservable(a, b, c, d, o2, 102);
+        PyramidIdentifier pyramid2 = new PyramidIdentifier(a, b, c, d, o2, 102);
         //when
         int actualResultOfCompare = byCoordinateYComparator.compare(pyramid1, pyramid2);
         //then
@@ -34,10 +34,10 @@ public class ByCoordinateYComparatorTest {
         Point c = new Point(6, 8, -3);
         Point d = new Point(2, 8, -3);
         Point o1 = new Point(4, 6, 4);
-        PyramidObservable pyramid1 = new PyramidObservable(a, b, c, d, o1, 101);
+        PyramidIdentifier pyramid1 = new PyramidIdentifier(a, b, c, d, o1, 101);
 
         Point o2 = new Point(4, 7, 4);
-        PyramidObservable pyramid2 = new PyramidObservable(a, b, c, d, o2, 102);
+        PyramidIdentifier pyramid2 = new PyramidIdentifier(a, b, c, d, o2, 102);
         //when
         int actualResultOfCompare = byCoordinateYComparator.compare(pyramid1, pyramid2);
         //then
@@ -52,10 +52,10 @@ public class ByCoordinateYComparatorTest {
         Point c = new Point(6, 8, -3);
         Point d = new Point(2, 8, -3);
         Point o1 = new Point(4, 6, 4);
-        PyramidObservable pyramid1 = new PyramidObservable(a, b, c, d, o1, 101);
+        PyramidIdentifier pyramid1 = new PyramidIdentifier(a, b, c, d, o1, 101);
 
         Point o2 = new Point(4, 6, 4);
-        PyramidObservable pyramid2 = new PyramidObservable(a, b, c, d, o2, 102);
+        PyramidIdentifier pyramid2 = new PyramidIdentifier(a, b, c, d, o2, 102);
         //when
         int actualResultOfCompare = byCoordinateYComparator.compare(pyramid1, pyramid2);
         //then

@@ -1,6 +1,5 @@
 package com.epam.entity;
 
-import java.util.Objects;
 
 public class Pyramid {
     private Point baseA;

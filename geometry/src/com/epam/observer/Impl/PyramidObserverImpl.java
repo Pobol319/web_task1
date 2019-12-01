@@ -1,32 +1,32 @@
-package com.epam.entity;
+package com.epam.observer.Impl;
 
-import com.epam.observer.Observable;
+import com.epam.entity.Pyramid;
+import com.epam.entity.PyramidParameters;
 import com.epam.observer.Observer;
 import com.epam.util.PyramidUtil;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class PyramidObserver implements Observer {
+public class PyramidObserverImpl implements Observer {
     private Map<Long, PyramidParameters> map = new HashMap<>();
     private PyramidUtil pyramidUtil;
 
-    private static PyramidObserver instance;
+    private static PyramidObserverImpl instance;
 
-    private PyramidObserver(PyramidUtil pyramidUtil) {
+    private PyramidObserverImpl(PyramidUtil pyramidUtil) {
         this.pyramidUtil = pyramidUtil;
     }
 
-    public static PyramidObserver getInstance() {
+    public static PyramidObserverImpl getInstance() {
         if (instance == null) {
-            instance = new PyramidObserver(new PyramidUtil());
+            instance = new PyramidObserverImpl(new PyramidUtil());
         }
         return instance;
     }
 
-
     @Override
-    public void update(PyramidObservable observable) {
+    public void update(PyramidObservableImpl observable) {
         long identifier = observable.getIdentifier();
 
         if (!map.containsKey(identifier)) {
@@ -40,5 +40,9 @@ public class PyramidObserver implements Observer {
             map.get(identifier).setPyramidVolume(pyramidUtil.countPyramidVolume(observable));
             map.get(identifier).setRatioOfVolumeOfPyramids(pyramidUtil.countRatioOfVolumeOfPyramids(observable));
         }
+    }
+
+    public Map<Long, PyramidParameters> getPyramidParametersMap() {
+        return map;
     }
 }

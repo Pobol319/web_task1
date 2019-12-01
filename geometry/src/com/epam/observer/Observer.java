@@ -1,7 +1,7 @@
 package com.epam.observer;
 
-import com.epam.entity.PyramidObservable;
+import com.epam.observer.Impl.PyramidObservableImpl;
 
 public interface Observer {
-    void update(PyramidObservable observable);
+    void update(PyramidObservableImpl observable);
 }

@@ -1,12 +1,12 @@
 package com.epam.observer;
 
 
-import com.epam.entity.PyramidObserver;
+import com.epam.observer.Impl.PyramidObserverImpl;
 
 public interface Observable {
-    public void attach(PyramidObserver observer);
+    public void attach(PyramidObserverImpl observer);
 
-    public void detach(PyramidObserver observer);
+    public void detach(PyramidObserverImpl observer);
 
     public void notifyObservers();
 }

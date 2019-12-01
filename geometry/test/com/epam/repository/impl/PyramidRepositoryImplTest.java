@@ -1,6 +1,9 @@
-package com.epam.entity;
+package com.epam.repository.impl;
 
 import com.epam.comparator.IdComparator;
+import com.epam.entity.Point;
+import com.epam.entity.PyramidIdentifier;
+import com.epam.repository.impl.PyramidRepositoryImpl;
 import com.epam.specification.PyramidSpecificationById;
 import org.junit.Assert;
 import org.junit.Test;
@@ -8,7 +11,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PyramidRepositoryClassTest {
+public class PyramidRepositoryImplTest {
 
     @Test
     public void testSortReturnSortedList() {
@@ -30,10 +33,10 @@ public class PyramidRepositoryClassTest {
         list.add(pyramid1);
         list.add(pyramid2);
         list.add(pyramid3);
-        PyramidRepositoryClass pyramidRepositoryClass = new PyramidRepositoryClass();
+        PyramidRepositoryImpl pyramidRepositoryImpl = new PyramidRepositoryImpl();
         IdComparator idComparator = new IdComparator();
         //when
-        pyramidRepositoryClass.sort(list,idComparator);
+        pyramidRepositoryImpl.sort(list,idComparator);
         //then
         Assert.assertEquals(list.get(0),pyramid2);
         Assert.assertEquals(list.get(1),pyramid1);
@@ -56,14 +59,14 @@ public class PyramidRepositoryClassTest {
         Point o3 = new Point(6, 8, 14);
         PyramidIdentifier pyramid3 = new PyramidIdentifier(a, b, c, d, o3, 200);
 
-        PyramidRepositoryClass pyramidRepositoryClass = new PyramidRepositoryClass();
-        pyramidRepositoryClass.addPyramid(pyramid1);
-        pyramidRepositoryClass.addPyramid(pyramid2);
-        pyramidRepositoryClass.addPyramid(pyramid3);
+        PyramidRepositoryImpl pyramidRepositoryImpl = new PyramidRepositoryImpl();
+        pyramidRepositoryImpl.addPyramid(pyramid1);
+        pyramidRepositoryImpl.addPyramid(pyramid2);
+        pyramidRepositoryImpl.addPyramid(pyramid3);
 
         PyramidSpecificationById specification = new PyramidSpecificationById(200);
         //when
-        List<PyramidIdentifier> list = pyramidRepositoryClass.query(specification);
+        List<PyramidIdentifier> list = pyramidRepositoryImpl.query(specification);
         //then
         Assert.assertEquals(list.get(0),pyramid3);
     }

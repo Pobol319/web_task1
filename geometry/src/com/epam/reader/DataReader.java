@@ -25,7 +25,7 @@ public class DataReader {
         } catch (FileNotFoundException e) {
             throw new DataReaderException("File not found",e);
         } catch (IOException e) {
-            throw new DataReaderException("Problem reading file",e);
+            throw new DataReaderException("Problem with reading file",e);
         } finally {
             try {
                 if (bufferedReader != null) {
